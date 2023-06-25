@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:planner_app/bottom_navigation_bar_widget.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -8,7 +7,14 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomNavigationBarWidget(),
+      drawer: const Drawer(),
+      appBar: AppBar(
+        actions: const [
+          Icon(Icons.more_vert),
+        ],
+        backgroundColor: Colors.amberAccent,
+      ),
+      body: const BottomNavigationBarWidget(),
     );
   }
 }
