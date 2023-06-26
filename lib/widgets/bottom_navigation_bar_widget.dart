@@ -5,6 +5,7 @@ import 'package:planner_app/screen_bar/finance_screen.dart';
 import 'package:planner_app/screen_bar/goals_screen.dart';
 import 'package:planner_app/screen_bar/notes_screen.dart';
 import 'package:planner_app/screen_bar/tracker_screen.dart';
+import 'package:planner_app/theme/app_fonts.dart';
 
 class BottomNavigationBarWidget extends StatefulWidget {
   const BottomNavigationBarWidget({super.key});
@@ -24,7 +25,7 @@ class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget>
     'Заметки',
     'Финансы',
   ];
-  List<List<IconData>> _appBarIcons = [
+  final List<List<IconData>> _appBarIcons = [
     [Icons.home],
     [Icons.business, Icons.map],
     [Icons.business, Icons.map],
@@ -57,7 +58,114 @@ class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget>
     ];
 
     return Scaffold(
-      drawer: const Drawer(),
+      drawer: Drawer(
+        child: Column(
+          children: [
+            DrawerHeader(
+              decoration: BoxDecoration(),
+              child: Column(
+                children: [
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: IconButton(
+                      icon: const Icon(Icons.volume_up),
+                      tooltip: '',
+                      onPressed: () {},
+                    ),
+                  ),
+                  Text(
+                    'Planner',
+                    style: AppFonts.w700s25,
+                  ),
+                  Spacer(),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: TextButton(
+                      onPressed: () {},
+                      child: Text('Войти'),
+                    ),
+                  )
+                ],
+              ),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.home,
+              ),
+              title: const Text(
+                'Planner Premium',
+              ),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.home,
+              ),
+              title: const Text('Темы'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.business,
+              ),
+              title: const Text('Language'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.school,
+              ),
+              title: const Text('Настройки'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.close,
+              ),
+              title: const Text('Подержать проект'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.settings,
+              ),
+              title: const Text('Поделиться'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.info,
+              ),
+              title: const Text('Обратная связь'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.arrow_forward),
+              title: const Text('Оценить нас'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            Spacer(),
+            Text('version: 1.0.0'),
+            SizedBox(height: 20),
+          ],
+        ),
+      ),
       appBar: AppBar(
           backgroundColor: Colors.white,
           title: Text(_appBarTitles[_selectedIndex]),
@@ -67,10 +175,15 @@ class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget>
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: _appBarIcons[_selectedIndex].map((icon) {
-                  return Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 10),
-                    child: Icon(icon, size: 20),
+                  return IconButton(
+                    icon: Icon(icon),
+                    onPressed: () {},
                   );
+
+                  //  Padding(
+                  //   padding: const EdgeInsets.symmetric(horizontal: 10),
+                  //   child: Icon(icon, size: 20),
+                  // );
                 }).toList(),
               ),
             ),
