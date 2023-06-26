@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:planner_app/bottom_navigation_bar_widget.dart';
+import 'package:planner_app/resources/colors.dart';
+import 'package:planner_app/widgets/bottom_navigation_bar_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -7,15 +8,30 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const Drawer(),
-      appBar: AppBar(
-        title: Text('HomeScreen'),
-        actions: const [
-          Icon(Icons.more_vert),
-        ],
-        backgroundColor: Colors.white,
-      ),
-      body: const BottomNavigationBarWidget(),
+      body: BottomNavigationBarWidget(),
     );
   }
 }
+
+
+// class HomeAppBarWidget extends StatelessWidget implements PreferredSizeWidget {
+//   const HomeAppBarWidget({
+//     super.key,
+//     required this.title,
+//   });
+//   final String title;
+
+//   @override
+//   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return AppBar(
+//       title: Text(title),
+//       actions: const [
+//         Icon(Icons.more_vert),
+//       ],
+//       backgroundColor: Colors.white,
+//     );
+//   }
+// }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:planner_app/resources/colors.dart';
 import 'package:planner_app/screen_bar/affairs_screen.dart';
+import 'package:planner_app/screen_bar/finance_screen.dart';
 import 'package:planner_app/screen_bar/goals_screen.dart';
 import 'package:planner_app/screen_bar/notes_screen.dart';
 import 'package:planner_app/screen_bar/tracker_screen.dart';
@@ -15,28 +16,67 @@ class BottomNavigationBarWidget extends StatefulWidget {
 
 class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget>
     with SingleTickerProviderStateMixin {
-  int selectedIndex = 0;
+  int _selectedIndex = 0;
+  final List<String> _appBarTitles = [
+    'Цели',
+    'Дела',
+    'Трекер',
+    'Заметки',
+    'Финансы',
+  ];
+  List<List<IconData>> _appBarIcons = [
+    [Icons.home],
+    [Icons.business, Icons.map],
+    [Icons.business, Icons.map],
+    [Icons.business, Icons.map],
+    [Icons.school, Icons.notifications, Icons.favorite],
+  ];
+
   final List<Widget> _widgetOptions = <Widget>[
     const GoalsScreen(),
     const AffairsScreen(),
     const TrackerScreen(),
     const NotesScreen(),
-    const Center(child: Text('пять')),
+    const FinanceScreen()
   ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     List<IconData> data = [
       Icons.folder_open,
-      Icons.calendar_month,
-      Icons.add_task,
+      Icons.notes_rounded,
+      Icons.track_changes,
       Icons.favorite_outline_sharp,
       Icons.person_outline_sharp,
     ];
 
     return Scaffold(
+      drawer: const Drawer(),
+      appBar: AppBar(
+          backgroundColor: Colors.white,
+          title: Text(_appBarTitles[_selectedIndex]),
+          actions: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: _appBarIcons[_selectedIndex].map((icon) {
+                  return Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    child: Icon(icon, size: 20),
+                  );
+                }).toList(),
+              ),
+            ),
+          ]),
       backgroundColor: Colors.white,
-      body: _widgetOptions[selectedIndex],
+      body: _widgetOptions[_selectedIndex],
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(15),
         child: Material(
@@ -53,16 +93,16 @@ class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget>
                 padding: const EdgeInsets.symmetric(horizontal: 15),
                 child: GestureDetector(
                   onTap: () {
-                    if (selectedIndex == i) return;
+                    if (_selectedIndex == i) return;
                     setState(() {
-                      selectedIndex = i;
+                      _selectedIndex = i;
                     });
                   },
                   child: AnimatedContainer(
                     duration: const Duration(milliseconds: 250),
                     width: 40,
                     decoration: BoxDecoration(
-                      border: i == selectedIndex
+                      border: i == _selectedIndex
                           ? const Border(
                               top: BorderSide(
                                 width: 3.0,
@@ -70,7 +110,7 @@ class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget>
                               ),
                             )
                           : null,
-                      gradient: i == selectedIndex
+                      gradient: i == _selectedIndex
                           ? LinearGradient(
                               colors: [
                                   Colors.grey.shade700,
@@ -83,7 +123,7 @@ class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget>
                     child: Icon(
                       data[i],
                       size: 35,
-                      color: i == selectedIndex
+                      color: i == _selectedIndex
                           ? Colors.white
                           : Colors.grey.shade700,
                     ),
