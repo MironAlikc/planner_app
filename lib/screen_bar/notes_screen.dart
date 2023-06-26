@@ -5,6 +5,8 @@ class NotesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(backgroundColor: Colors.green);
+    return Scaffold(
+        //  backgroundColor: Colors.green,
+        );
   }
 }

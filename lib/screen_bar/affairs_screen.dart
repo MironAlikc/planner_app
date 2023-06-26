@@ -6,7 +6,7 @@ class AffairsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.amber,
-    );
+        // backgroundColor: Colors.amber,
+        );
   }
 }
