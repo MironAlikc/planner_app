@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:planner_app/resources/colors.dart';
+import 'package:planner_app/screen_bar/affairs_screen.dart';
 import 'package:planner_app/screen_bar/goals_screen.dart';
+import 'package:planner_app/screen_bar/notes_screen.dart';
+import 'package:planner_app/screen_bar/tracker_screen.dart';
 
 class BottomNavigationBarWidget extends StatefulWidget {
   const BottomNavigationBarWidget({super.key});
@@ -15,9 +18,9 @@ class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget>
   int selectedIndex = 0;
   final List<Widget> _widgetOptions = <Widget>[
     const GoalsScreen(),
-    const Center(child: Text('два')),
-    const Center(child: Text('три')),
-    const Center(child: Text('четыри')),
+    const AffairsScreen(),
+    const TrackerScreen(),
+    const NotesScreen(),
     const Center(child: Text('пять')),
   ];
 
