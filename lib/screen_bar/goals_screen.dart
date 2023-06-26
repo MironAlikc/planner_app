@@ -8,11 +8,6 @@ class GoalsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        //toolbarHeight: 120,
-        backgroundColor: Colors.white,
-        title: Text('Цели'),
-      ),
       body: Center(
         child: Text('У Вас пока нет целей'),
       ),

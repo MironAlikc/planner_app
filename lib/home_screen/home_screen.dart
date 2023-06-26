@@ -9,10 +9,11 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       drawer: const Drawer(),
       appBar: AppBar(
+        title: Text('HomeScreen'),
         actions: const [
           Icon(Icons.more_vert),
         ],
-        backgroundColor: Colors.amberAccent,
+        backgroundColor: Colors.white,
       ),
       body: const BottomNavigationBarWidget(),
     );
