@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:planner_app/resources/colors.dart';
-import 'package:planner_app/screen_bar/affairs_screen.dart';
-import 'package:planner_app/screen_bar/finance_screen.dart';
-import 'package:planner_app/screen_bar/goals_screen.dart';
-import 'package:planner_app/screen_bar/notes_screen.dart';
-import 'package:planner_app/screen_bar/tracker_screen.dart';
+import 'package:planner_app/screen_navigation_bar/affairs_screen.dart';
+import 'package:planner_app/screen_navigation_bar/finance_screen.dart';
+import 'package:planner_app/screen_navigation_bar/goals_screen.dart';
+import 'package:planner_app/screen_navigation_bar/notes_screen.dart';
+import 'package:planner_app/screen_navigation_bar/tracker_screen.dart';
 import 'package:planner_app/theme/app_fonts.dart';
 
 class BottomNavigationBarWidget extends StatefulWidget {
@@ -73,7 +73,7 @@ class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget>
                       onPressed: () {},
                     ),
                   ),
-                  Text(
+                  const Text(
                     'Planner',
                     style: AppFonts.w700s25,
                   ),
@@ -89,7 +89,7 @@ class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget>
               ),
             ),
             ListTile(
-              leading: Icon(
+              leading: const Icon(
                 Icons.home,
               ),
               title: const Text(
@@ -100,7 +100,7 @@ class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget>
               },
             ),
             ListTile(
-              leading: Icon(
+              leading: const Icon(
                 Icons.home,
               ),
               title: const Text('Темы'),
