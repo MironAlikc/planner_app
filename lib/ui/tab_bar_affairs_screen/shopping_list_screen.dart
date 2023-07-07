@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:planner_app/theme/app_fonts.dart';
+import 'package:planner_app/ui/theme/app_fonts.dart';
 
 class ShoppingListScreen extends StatelessWidget {
   const ShoppingListScreen({super.key});

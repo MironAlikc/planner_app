@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:planner_app/resources/colors.dart';
-import 'package:planner_app/tab_bar_affairs_screen/other_screen.dart';
-import 'package:planner_app/tab_bar_affairs_screen/work_screen.dart';
-import 'package:planner_app/tab_bar_tracker_screen/development_screen.dart';
-import 'package:planner_app/tab_bar_tracker_screen/health_screen.dart';
-import 'package:planner_app/tab_bar_tracker_screen/sport_screen.dart';
+import 'package:planner_app/ui/resources/colors.dart';
+import 'package:planner_app/ui/tab_bar_affairs_screen/other_screen.dart';
+import 'package:planner_app/ui/tab_bar_affairs_screen/work_screen.dart';
+import 'package:planner_app/ui/tab_bar_tracker_screen/development_screen.dart';
+import 'package:planner_app/ui/tab_bar_tracker_screen/health_screen.dart';
+import 'package:planner_app/ui/tab_bar_tracker_screen/sport_screen.dart';
 
 class TrackerScreen extends StatefulWidget {
   const TrackerScreen({super.key});

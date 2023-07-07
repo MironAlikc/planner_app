@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:planner_app/theme/app_fonts.dart';
+import 'package:planner_app/ui/theme/app_fonts.dart';
 
-class WorkScreen extends StatelessWidget {
-  const WorkScreen({super.key});
+class OtherScreen extends StatelessWidget {
+  const OtherScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

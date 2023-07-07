@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:planner_app/theme/app_fonts.dart';
+import 'package:planner_app/ui/theme/app_fonts.dart';
 
-class PrivateScreen extends StatelessWidget {
-  const PrivateScreen({super.key});
+class OtherScreen extends StatelessWidget {
+  const OtherScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       backgroundColor: Colors.white,
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15),
+        padding: EdgeInsets.symmetric(horizontal: 15),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
