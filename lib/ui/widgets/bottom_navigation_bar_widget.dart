@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:planner_app/resources/colors.dart';
-import 'package:planner_app/screen_navigation_bar/affairs_screen.dart';
-import 'package:planner_app/screen_navigation_bar/finance_screen.dart';
-import 'package:planner_app/screen_navigation_bar/goals_screen.dart';
-import 'package:planner_app/screen_navigation_bar/notes_screen.dart';
-import 'package:planner_app/screen_navigation_bar/tracker_screen.dart';
-import 'package:planner_app/theme/app_fonts.dart';
+import 'package:planner_app/ui/groups/groups_widget.dart';
+
+import 'package:planner_app/ui/resources/colors.dart';
+import 'package:planner_app/ui/screen_navigation_bar/affairs_screen.dart';
+import 'package:planner_app/ui/screen_navigation_bar/finance_screen.dart';
+import 'package:planner_app/ui/screen_navigation_bar/goals_screen.dart';
+import 'package:planner_app/ui/screen_navigation_bar/tracker_screen.dart';
+import 'package:planner_app/ui/theme/app_fonts.dart';
+import 'package:planner_app/ui/widgets/calendar_screen.dart';
 
 class BottomNavigationBarWidget extends StatefulWidget {
   const BottomNavigationBarWidget({super.key});
@@ -27,9 +29,9 @@ class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget>
   ];
   final List<List<IconData>> _appBarIcons = [
     [Icons.home],
+    [Icons.calendar_today_outlined, Icons.map],
     [Icons.business, Icons.map],
-    [Icons.business, Icons.map],
-    [Icons.business, Icons.map],
+    [Icons.calendar_today_outlined, Icons.map],
     [Icons.school, Icons.notifications, Icons.favorite],
   ];
 
@@ -37,7 +39,7 @@ class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget>
     const GoalsScreen(),
     const AffairsScreen(),
     const TrackerScreen(),
-    const NotesScreen(),
+    const GroupsWidget(),
     const FinanceScreen()
   ];
 
@@ -53,7 +55,7 @@ class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget>
       Icons.folder_open,
       Icons.notes_rounded,
       Icons.track_changes,
-      Icons.favorite_outline_sharp,
+      Icons.note_alt_outlined,
       Icons.person_outline_sharp,
     ];
 
@@ -167,27 +169,52 @@ class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget>
         ),
       ),
       appBar: AppBar(
-          backgroundColor: Colors.white,
-          title: Text(_appBarTitles[_selectedIndex]),
-          actions: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: _appBarIcons[_selectedIndex].map((icon) {
-                  return IconButton(
-                    icon: Icon(icon),
-                    onPressed: () {},
-                  );
-
-                  //  Padding(
-                  //   padding: const EdgeInsets.symmetric(horizontal: 10),
-                  //   child: Icon(icon, size: 20),
-                  // );
-                }).toList(),
-              ),
+        backgroundColor: Colors.white,
+        title: Text(_appBarTitles[_selectedIndex]),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: _appBarIcons[_selectedIndex].map((icon) {
+                return IconButton(
+                  icon: Icon(icon),
+                  onPressed: () {
+                    if (icon == Icons.home) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => CalendarScreen()),
+                      );
+                    } else if (icon == Icons.calendar_today_outlined) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => CalendarScreen()),
+                      );
+                    }
+                    // Добавь другие условия для остальных иконок
+                  },
+                );
+              }).toList(),
             ),
-          ]),
+          ),
+        ],
+        // actions: [
+        //   Padding(
+        //     padding: const EdgeInsets.all(8.0),
+        //     child: Row(
+        //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        //       children: _appBarIcons[_selectedIndex].map((icon) {
+        //         return IconButton(
+        //           icon: Icon(icon),
+        //           onPressed: () {},
+        //         );
+        //       }).toList(),
+        //     ),
+        //   ),
+        // ]
+      ),
       backgroundColor: Colors.white,
       body: _widgetOptions[_selectedIndex],
       bottomNavigationBar: Padding(

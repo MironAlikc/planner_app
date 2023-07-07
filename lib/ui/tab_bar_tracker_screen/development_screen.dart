@@ -1,28 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:planner_app/theme/app_fonts.dart';
+import 'package:planner_app/ui/theme/app_fonts.dart';
 
-class GoalsScreen extends StatelessWidget {
-  const GoalsScreen({super.key});
+class DevelopmentScreen extends StatelessWidget {
+  const DevelopmentScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       backgroundColor: Colors.white,
       body: Padding(
-        padding: const EdgeInsets.symmetric(
+        padding: EdgeInsets.symmetric(
           horizontal: 20,
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'У Вас пока нет целей.',
+              'К цели - через привычки.',
               style: AppFonts.w700s25,
             ),
             SizedBox(height: 20),
             Text(
-              'Цели должны быть ясными, простыми и записаными. Если они не записаны и их каждый день не пересматривать - это не цели. Это пожелания',
+              'Трекер привычек - это инструмент, который помагает Вам формировать, закреплять новые, полезные привычки и избавляться от старых, вредных',
               style: AppFonts.w400s18,
             ),
           ],

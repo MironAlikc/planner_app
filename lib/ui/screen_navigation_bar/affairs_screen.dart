@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:planner_app/resources/colors.dart';
-import 'package:planner_app/tab_bar_affairs_screen/other_screen.dart';
-import 'package:planner_app/tab_bar_affairs_screen/private_screen.dart';
-import 'package:planner_app/tab_bar_affairs_screen/shopping_list_screen.dart';
-import 'package:planner_app/tab_bar_affairs_screen/work_screen.dart';
+import 'package:planner_app/ui/resources/colors.dart';
+import 'package:planner_app/ui/tab_bar_affairs_screen/other_screen.dart';
+import 'package:planner_app/ui/tab_bar_affairs_screen/private_screen.dart';
+import 'package:planner_app/ui/tab_bar_affairs_screen/shopping_list_screen.dart';
+import 'package:planner_app/ui/tab_bar_affairs_screen/work_screen.dart';
 
 class AffairsScreen extends StatefulWidget {
   const AffairsScreen({super.key});
