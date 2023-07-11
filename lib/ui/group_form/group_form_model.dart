@@ -8,7 +8,7 @@ class GroupFormModel {
 // Сохраниение групп
   void saveGroup(BuildContext context) async {
     if (groupName.isEmpty) return;
-    if (Hive.isAdapterRegistered(1)) {
+    if (!Hive.isAdapterRegistered(1)) {
       Hive.registerAdapter(GroupAdapter());
     }
     final box = await Hive.openBox<Group>('goups_box');
