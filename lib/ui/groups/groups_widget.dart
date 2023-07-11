@@ -1,20 +1,45 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:planner_app/ui/resources/colors.dart';
+import 'package:planner_app/ui/groups/groups_widget_model.dart';
 
-class GroupsWidget extends StatelessWidget {
+class GroupsWidget extends StatefulWidget {
   const GroupsWidget({super.key});
-  void showFrom(BuildContext context) {
-    Navigator.of(context).pushNamed('/groups/form');
+
+  @override
+  State<GroupsWidget> createState() => _GroupsWidgetState();
+}
+
+class _GroupsWidgetState extends State<GroupsWidget> {
+  final _model = GroupsWidgetModel();
+
+  @override
+  Widget build(BuildContext context) {
+    return GroupsWidgetModelProvider(
+      model: _model,
+      child: const _GroupsWidgetBody(),
+    );
   }
+
+  @override
+  void dispose() async {
+    await _model.dispose();
+    super.dispose();
+  }
+}
+
+class _GroupsWidgetBody extends StatelessWidget {
+  const _GroupsWidgetBody({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Группы'),
+      ),
       body: const _GroupsListWidget(),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: ColorsApp.mainColor,
-        onPressed: () => showFrom(context),
+        onPressed: () =>
+            GroupsWidgetModelProvider.read(context)?.model.showForm(context),
         child: const Icon(Icons.add),
       ),
     );
@@ -26,15 +51,17 @@ class _GroupsListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final groupsCount =
+        GroupsWidgetModelProvider.watch(context)?.model.groups.length ?? 0;
     return ListView.separated(
-      itemCount: 10,
-      separatorBuilder: (BuildContext context, int index) {
+      itemCount: groupsCount,
+      itemBuilder: (BuildContext context, int index) {
         return _GroupsListRowWidget(
           indexInList: index,
         );
       },
-      itemBuilder: (BuildContext context, int index) {
-        return const SizedBox();
+      separatorBuilder: (BuildContext context, int index) {
+        return const Divider(height: 1);
       },
     );
   }
@@ -51,6 +78,8 @@ class _GroupsListRowWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final model = GroupsWidgetModelProvider.read(context)!.model;
+    final group = model.groups[indexInList];
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 1),
       child: Slidable(
@@ -60,21 +89,23 @@ class _GroupsListRowWidget extends StatelessWidget {
           dismissible: DismissiblePane(onDismissed: () {}),
           children: [
             SlidableAction(
-              onPressed: deleteTapped,
-              backgroundColor: Color(0xFFFE4A49),
+              onPressed: (BuildContext context) =>
+                  model.deleteGroup(indexInList),
+              //onPressed: deleteTapped,
+              backgroundColor: const Color(0xFFFE4A49),
               foregroundColor: Colors.white,
               icon: Icons.delete,
               label: 'Delete',
               borderRadius: BorderRadius.circular(12),
             ),
           ],
-        ),
+        ), 
         startActionPane: ActionPane(
-          motion: ScrollMotion(),
+          motion: const ScrollMotion(),
           children: [
             SlidableAction(
-              onPressed: deleteTapped,
-              backgroundColor: Color(0xFF0392CF),
+              onPressed: (BuildContext context) {},
+              backgroundColor: const Color(0xFF0392CF),
               foregroundColor: Colors.white,
               icon: Icons.save,
               label: 'Save',
@@ -85,8 +116,8 @@ class _GroupsListRowWidget extends StatelessWidget {
         child: Card(
           child: ListTile(
             leading: const FlutterLogo(),
-            title: const Text('One-line with leading widget'),
-            onTap: () {},
+            title: Text(group.name),
+            onTap: () => model.showTasks(context, indexInList),
           ),
         ),
       ),

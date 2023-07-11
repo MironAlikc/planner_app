@@ -64,7 +64,7 @@ class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget>
         child: Column(
           children: [
             DrawerHeader(
-              decoration: BoxDecoration(),
+              decoration: const BoxDecoration(),
               child: Column(
                 children: [
                   Align(
@@ -79,12 +79,12 @@ class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget>
                     'Planner',
                     style: AppFonts.w700s25,
                   ),
-                  Spacer(),
+                  const Spacer(),
                   Align(
                     alignment: Alignment.centerRight,
                     child: TextButton(
                       onPressed: () {},
-                      child: Text('Войти'),
+                      child: const Text('Войти'),
                     ),
                   )
                 ],
@@ -111,7 +111,7 @@ class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget>
               },
             ),
             ListTile(
-              leading: Icon(
+              leading: const Icon(
                 Icons.business,
               ),
               title: const Text('Language'),
@@ -120,7 +120,7 @@ class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget>
               },
             ),
             ListTile(
-              leading: Icon(
+              leading: const Icon(
                 Icons.school,
               ),
               title: const Text('Настройки'),
@@ -129,7 +129,7 @@ class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget>
               },
             ),
             ListTile(
-              leading: Icon(
+              leading: const Icon(
                 Icons.close,
               ),
               title: const Text('Подержать проект'),
@@ -138,7 +138,7 @@ class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget>
               },
             ),
             ListTile(
-              leading: Icon(
+              leading: const Icon(
                 Icons.settings,
               ),
               title: const Text('Поделиться'),
@@ -147,7 +147,7 @@ class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget>
               },
             ),
             ListTile(
-              leading: Icon(
+              leading: const Icon(
                 Icons.info,
               ),
               title: const Text('Обратная связь'),
@@ -156,15 +156,15 @@ class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget>
               },
             ),
             ListTile(
-              leading: Icon(Icons.arrow_forward),
+              leading: const Icon(Icons.arrow_forward),
               title: const Text('Оценить нас'),
               onTap: () {
                 Navigator.pop(context);
               },
             ),
-            Spacer(),
-            Text('version: 1.0.0'),
-            SizedBox(height: 20),
+            const Spacer(),
+            const Text('version: 1.0.0'),
+            const SizedBox(height: 20),
           ],
         ),
       ),
@@ -184,13 +184,13 @@ class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget>
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => CalendarScreen()),
+                            builder: (context) => const CalendarScreen()),
                       );
                     } else if (icon == Icons.calendar_today_outlined) {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => CalendarScreen()),
+                            builder: (context) => const CalendarScreen()),
                       );
                     }
                     // Добавь другие условия для остальных иконок
