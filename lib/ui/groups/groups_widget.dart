@@ -33,9 +33,7 @@ class _GroupsWidgetBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Группы'),
-      ),
+      backgroundColor: Colors.white,
       body: const _GroupsListWidget(),
       floatingActionButton: FloatingActionButton(
         onPressed: () =>
@@ -61,7 +59,8 @@ class _GroupsListWidget extends StatelessWidget {
         );
       },
       separatorBuilder: (BuildContext context, int index) {
-        return const Divider(height: 1);
+        return Container();
+        //const Divider(height: 1);
       },
     );
   }
@@ -99,7 +98,7 @@ class _GroupsListRowWidget extends StatelessWidget {
               borderRadius: BorderRadius.circular(12),
             ),
           ],
-        ), 
+        ),
         startActionPane: ActionPane(
           motion: const ScrollMotion(),
           children: [
