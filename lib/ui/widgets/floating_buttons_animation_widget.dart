@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, required this.title}) : super(key: key);
+class FloatingButtonsAnimationWidget extends StatefulWidget {
+  FloatingButtonsAnimationWidget({Key? key, required this.title})
+      : super(key: key);
 
   final String title;
 
@@ -9,7 +10,7 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage>
+class _MyHomePageState extends State<FloatingButtonsAnimationWidget>
     with SingleTickerProviderStateMixin {
   bool _isExpanded = false;
 
@@ -47,9 +48,6 @@ class _MyHomePageState extends State<MyHomePage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: Text(widget.title),
-      // ),
       body: GestureDetector(
         onTap: () {
           if (_isExpanded) {
@@ -59,12 +57,6 @@ class _MyHomePageState extends State<MyHomePage>
         child: Stack(
           fit: StackFit.expand,
           children: <Widget>[
-            Center(
-              child: Text(
-                'Привет, мир!',
-                style: TextStyle(fontSize: 24),
-              ),
-            ),
             IgnorePointer(
               ignoring: !_isExpanded,
               child: FadeTransition(
@@ -105,10 +97,10 @@ class _MyHomePageState extends State<MyHomePage>
   Widget _buildFloatingActionButton(int index, IconData icon) {
     final double buttonSize = 56.0;
     final double expandedButtonSize = 64.0;
-    //final double buttonSpacing = 16.0;
+    // final double buttonSpacing = 16.0;
 
     return AnimatedContainer(
-      duration: const Duration(milliseconds: 300),
+      duration: const Duration(milliseconds: 400),
       width: _isExpanded ? expandedButtonSize : buttonSize,
       height: _isExpanded ? expandedButtonSize : buttonSize,
       child: FloatingActionButton(
