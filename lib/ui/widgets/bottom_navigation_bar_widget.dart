@@ -181,13 +181,13 @@ class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget>
                   icon: Icon(icon),
                   onPressed: () {
                     if (icon == Icons.home) {
-                      Navigator.push(
+                      Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
                             builder: (context) => const CalendarScreen()),
                       );
                     } else if (icon == Icons.calendar_today_outlined) {
-                      Navigator.push(
+                      Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
                             builder: (context) => const CalendarScreen()),
